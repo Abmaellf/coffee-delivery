@@ -5,7 +5,6 @@ export const HeaderContainer = styled.header`
     align-items: center;
     justify-content: space-between;
 
-    background: var('base-text');
     margin-left: 10rem;
     margin-right: 10rem;
 `
@@ -28,15 +27,14 @@ export const RegionStyle = styled.div`
     align-items: center;
     justify-content: center;
     background: ${(props) => props.theme['purple-light']};
-    /* padding: 10px; */
     border-radius: 8px;
     margin: 10px;
     
     button {
         margin: 8px;
         border: 0;
+        cursor: pointer;
     }
-    
     
     span {
         font-family: Roboto;
@@ -52,6 +50,7 @@ export const CarContainer = styled.div`
         background: transparent;
             margin: 8px;
             border: 0;
+            cursor: pointer;
         }
     
 `
