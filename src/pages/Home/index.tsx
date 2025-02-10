@@ -1,4 +1,4 @@
-import { CompraEmbalagem, CompraEntrega, EmbalagemFresca, EntregaFresca, HomeContainer, ImageContainer,  QualityCoffee, Title, TitleAndItensConatainer } from "./styles";
+import {  CompraEntrega, EmbalagemFresca, HomeContainer, ImageContainer,  QualityCoffee, Title, TitleAndItensConatainer } from "./styles";
 import logoCoffee from '../../assets/logoCafe.png'
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 

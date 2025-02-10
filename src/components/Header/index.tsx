@@ -13,7 +13,7 @@ export function Header() {
             <CarAndRegioContainer>
                 <RegionStyle>   
                    <button><MapPin size={22} weight="fill" color="#8047F8"  />  </button>         
-                    <span>Porto Alegre, RS</span>
+                    <span>Vázea Grande, MT</span>
                 </RegionStyle>
                 
                 <CarContainer>

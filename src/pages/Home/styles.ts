@@ -8,12 +8,10 @@ export const HomeContainer = styled.div`
     margin-right: 10rem;
     /* gap: 12rem; */
     margin-top: 92px;
-
-    
 `
 
 export const TitleAndItensConatainer = styled.div`
-
+    margin-bottom: 140px;
 `
 export const Title = styled.div`
     font-size: 20px;
@@ -28,8 +26,6 @@ export const QualityCoffee = styled.div`
    margin-top: 66px;
    display: flex;
    gap:1rem;
-   
-    
 `
 export const CompraEntrega = styled.div`
     display: flex;
