@@ -2,12 +2,13 @@ import { CarAndRegioContainer, CarContainer, HeaderContainer, LogoContainer, Reg
 import logo from '../../assets/Logo.png'
 import icon from '../../assets/Icon.png'
 import { MapPin, ShoppingCart } from "phosphor-react";
+import { NavLink } from "react-router-dom";
 
 export function Header() {
     return(
         <HeaderContainer>
             <LogoContainer>
-                <img src={logo} alt="" />
+               <NavLink to="/"> <img src={logo} alt="" /></NavLink>
             </LogoContainer>
 
             <CarAndRegioContainer>
@@ -17,7 +18,9 @@ export function Header() {
                 </RegionStyle>
                 
                 <CarContainer>
-                <button><ShoppingCart size={22} weight="fill" color='#C47F17'   /> </button>
+                <NavLink to="/carrinho">
+                    <button><ShoppingCart size={22} weight="fill" color='#C47F17' /> </button>
+                    </NavLink>
                 </CarContainer>
                 
 

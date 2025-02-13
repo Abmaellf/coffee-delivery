@@ -2,17 +2,17 @@ import { ThemeProvider } from "styled-components";
 import { Header } from "./components/Header";
 import { defaultTheme } from "./styles/themes/default";
 import { GlobalStyle } from "./styles/global";
-import { Home } from "./pages/Home";
-import { Product } from "./components/Product/Product";
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./Router";
 
 export function App() {
 
   return (
+    // Não foi criado arquivos de tipagens @types -> styled.d.ts
     <ThemeProvider theme={defaultTheme}>
-      <Header />
-      <Home />
-      <Product />
-      
+      <BrowserRouter>
+        <Router></Router>
+      </BrowserRouter>
       <GlobalStyle />
 
     </ThemeProvider>
