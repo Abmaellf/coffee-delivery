@@ -24,7 +24,6 @@ body, input, textarea, button {
   font-weight: 400;
   font-style: normal;
   font-size: 1rem;
-  font-variation-settings:
-    "wdth" 100;
+  font-variation-settings: "wdth" 100;
 }
 `;

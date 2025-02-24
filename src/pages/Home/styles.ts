@@ -111,6 +111,64 @@ export const ImageContainer = styled.div`
     width: 476px;
     height:360px;
     /* margin-right: 16px; */
+`
 
+export const ProductContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    margin-left: 10rem;
+    margin-right: 10rem;
+    padding-bottom: 30px;
+`
+export const TitleAndCategory = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 54px;
+    /* gap: 25rem; */
+    width: 100%;
+   
+    
+`
+
+export const TitleProdutos = styled.div`
+    font-family: "Baloo 2", serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color :${(props) => props.theme['base-subtitle']};
+    
+    /* margin-bottom: 54px; */
+`
+
+export const TypeCategoryContainer = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    justify-items: stretch;
+    gap:2rem;
+    
+    
+    span {
+        font-family: "Baloo 2", serif;
+        font-size: 12px;
+        /* font-weight: bold; */
+        border-radius: 15px;
+        color :${(props) => props.theme['yellow-dark']};
+        border: solid 1px ${(props) => props.theme['yellow-dark']} ; 
+        padding: 0 8px 0 8px;
+    }
+    
+`
+
+export const CoffeeList = styled.div`
+    display: flex;
+    margin-right: 1rem;
+    margin-left: 10rem;
+    flex-wrap: wrap;
+   
+    gap: 1rem;
+    
 `
 

@@ -5,8 +5,10 @@ export const ItemContainer = styled.div`
     flex-direction: column;
     background:${(props) => props.theme['base-card']};
     border-radius: 0 32px 0 0;
-    width:256px;
-    height: 335px;
+    padding: 10px;
+/*    
+    width:256px; 
+    height: 335px; */
     gap: 2rem;
 
     header {
@@ -24,7 +26,7 @@ export const ItemContainer = styled.div`
             color :${(props) => props.theme['yellow-dark']};
             border-radius: 10px;
             font-size: 10px;
-            padding: 5px;
+            /* padding: 5px; */
         }
 
         h1 {
@@ -38,7 +40,7 @@ export const ItemContainer = styled.div`
             font-family: "Roboto", serif;
             font-size: 14px;
             color :${(props) => props.theme['base-label']};
-            width: 250px;
+            width: 240px;
         }
     }
 
@@ -48,7 +50,13 @@ export const ItemContainer = styled.div`
 export const PriceContainer = styled.div`
     display: flex;
     align-items: center;
-    /* justify-content: space-around; */
+    justify-content: space-around;
+
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
 
     button {
         display: flex;
@@ -85,13 +93,23 @@ export const PriceContainer = styled.div`
 export const Countdown = styled.div`
         display: flex;
         align-items: center;
-        /* justify-content: space-around; */
+        justify-content: space-between;
         background: ${(props) => props.theme['base-button']};
-        /* width: 60px; */
-        border-radius:8px;
-    
-        /* margin-left:20px;
-        margin-right:10px; */
+        /* width: 65px; */
+        border-radius:8px;    
+        margin-left:10px;
+        margin-right:10px;
+
+        button:first-child {
+        
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        color:${(props) => props.theme['purple']};
+        /* padding:7px; */
+        font-size: 36px;
+        
+    }
 
     button {
         border: 0;
@@ -99,6 +117,7 @@ export const Countdown = styled.div`
         cursor: pointer;
         color:${(props) => props.theme['purple']};
         /* padding:7px; */
+        font-size: 24px;
         
     }
     p {
@@ -108,9 +127,13 @@ export const Countdown = styled.div`
     }
     input {
         border:0;
+        font-family: "Roboto", serif;
+        font-weight: bold;
+        font-size: 16px;
+        text-align: center;
+        /* background: ${(props) => props.theme['base-button']}; */
+        background: transparent;
         
     }
-            
-   
     
 `

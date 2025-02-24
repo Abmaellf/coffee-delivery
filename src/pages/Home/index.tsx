@@ -1,7 +1,30 @@
-import {  CafeFresquinho, CarrinhoContainer, CompraEntrega,  EmbalagemFresca,  EmbalagemIntacto, EntregaRapidaContainer, HomeContainer, IcoCoffe, IconPackge, IconShoppingCart, IcoTImer, ImageContainer,  QualityCoffee, Title, TitleAndItensConatainer } from "./styles";
+import {  
+    CafeFresquinho, 
+    CarrinhoContainer, 
+    CoffeeList, 
+    CompraEntrega,  
+    EmbalagemFresca, 
+    EmbalagemIntacto, 
+    EntregaRapidaContainer, 
+    HomeContainer, 
+    IcoCoffe, 
+    IconPackge, 
+    IconShoppingCart, 
+    IcoTImer, 
+    ImageContainer, 
+    ProductContainer,  
+    QualityCoffee, 
+    Title, 
+    TitleAndCategory, 
+    TitleAndItensConatainer, 
+    TitleProdutos, 
+    TypeCategoryContainer } 
+from "./styles";
+
 import logoCoffee from '../../assets/logoCafe.png'
 import { Coffee, Package, ShoppingCart, Timer, } from "phosphor-react";
-import { Product } from "../../components/Product/Product";
+import { coffees }  from '../../../data.json'
+import { Card } from "../../components/Card";
 
 export function Home() {
     return(
@@ -15,43 +38,73 @@ export function Home() {
 
                  <QualityCoffee>
 
-                        <CompraEntrega>
-                            <CarrinhoContainer>
-                                <IconShoppingCart><ShoppingCart size={22} weight="fill"  color='#FFFFFF' /></IconShoppingCart>
-                                <div>Compra simples e segura</div>
-                            </CarrinhoContainer>
+                    <CompraEntrega>
+                        <CarrinhoContainer>
+                            <IconShoppingCart><ShoppingCart size={22} weight="fill"  color='#FFFFFF' /></IconShoppingCart>
+                            <div>Compra simples e segura</div>
+                        </CarrinhoContainer>
 
-                            <EntregaRapidaContainer>
-                                <IcoTImer><Timer size={22} weight="fill"  color='#FFFFFF'/></IcoTImer>
-                                <div>Entrega rápida e rastreada </div>
-                            </EntregaRapidaContainer>
-                            
-                        </CompraEntrega>
-
-                         <EmbalagemFresca>
-                            <EmbalagemIntacto>
-                                <IconPackge><Package size={22} weight="fill"  color='#FFFFFF' /></IconPackge>
-                                    <span>Embalagem mantém o café intacto</span>
-                                
-                            </EmbalagemIntacto>
-
-                            <CafeFresquinho>
-                                <IcoCoffe> <Coffee size={22} weight="fill"  color='#FFFFFF' /> </IcoCoffe>
-                                <span>O café chega fresquinho até você</span>
-                            </CafeFresquinho>
+                        <EntregaRapidaContainer>
+                            <IcoTImer><Timer size={22} weight="fill"  color='#FFFFFF'/></IcoTImer>
+                            <div>Entrega rápida e rastreada </div>
+                        </EntregaRapidaContainer>
                         
-                        </EmbalagemFresca> 
+                    </CompraEntrega>
 
-                    </QualityCoffee>
+                    <EmbalagemFresca>
+                        <EmbalagemIntacto>
+                            <IconPackge><Package size={22} weight="fill"  color='#FFFFFF' /></IconPackge>
+                                <span>Embalagem mantém o café intacto</span>
+                        </EmbalagemIntacto>
+
+                        <CafeFresquinho>
+                            <IcoCoffe> <Coffee size={22} weight="fill"  color='#FFFFFF' /> </IcoCoffe>
+                            <span>O café chega fresquinho até você</span>
+                        </CafeFresquinho>
+                    
+                    </EmbalagemFresca> 
+
+                </QualityCoffee>
 
             </TitleAndItensConatainer>
 
             <ImageContainer >
                 <img src={logoCoffee}/>
             </ImageContainer>
-        </HomeContainer>
 
-        <Product />
+        </HomeContainer>
+        
+        <ProductContainer>
+                            
+            <TitleAndCategory>
+                <TitleProdutos> Nossos cafés </TitleProdutos>
+                <TypeCategoryContainer>
+                    <span> TRADICIONAL </span>
+                    <span> ESPECIAL </span>
+                    <span> COM LEITE  </span>
+                    <span> ALCOÓLICO </span>
+                    <span> GELADO </span>
+                </TypeCategoryContainer>
+            </TitleAndCategory>
+        </ProductContainer>
+
+        <CoffeeList>
+            {
+                coffees.map((coffee)=> {
+                  return(
+                    <Card 
+                        key={coffee.id}
+                        id={coffee.id}
+                        image={coffee.image}
+                        tags={ coffee.tags}
+                        title= {coffee.title}
+                        description={coffee.description}
+                        price={coffee.price}
+                    /> 
+                  )
+                })
+            }
+        </CoffeeList>
     </>
     )
 }
