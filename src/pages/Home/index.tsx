@@ -94,12 +94,8 @@ export function Home() {
                   return(
                     <Card 
                         key={coffee.id}
-                        id={coffee.id}
-                        image={coffee.image}
-                        tags={ coffee.tags}
-                        title= {coffee.title}
-                        description={coffee.description}
-                        price={coffee.price}
+                        coffee={coffee}
+                        
                     /> 
                   )
                 })

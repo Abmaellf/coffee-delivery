@@ -1,9 +1,9 @@
 import { ThemeProvider } from "styled-components";
-import { Header } from "./components/Header";
 import { defaultTheme } from "./styles/themes/default";
 import { GlobalStyle } from "./styles/global";
 import { BrowserRouter } from "react-router-dom";
 import { Router } from "./Router";
+import { CoffeesContextProvider } from "./contexts/CoffeesContext";
 
 export function App() {
 
@@ -11,7 +11,9 @@ export function App() {
     // Não foi criado arquivos de tipagens @types -> styled.d.ts
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
+      <CoffeesContextProvider>
         <Router></Router>
+        </CoffeesContextProvider>
       </BrowserRouter>
       <GlobalStyle />
     </ThemeProvider>

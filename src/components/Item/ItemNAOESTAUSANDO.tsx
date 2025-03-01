@@ -1,6 +1,6 @@
 import { ShoppingCart } from 'phosphor-react'
 import cafeExpTra from '../../assets/CoffeeExTr.png'
-import { Countdown, ItemContainer, PriceContainer } from './styles'
+import { Countdown, ItemContainer, PriceContainer } from './stylesNAOESTA USANDO'
 import { useState } from 'react'
 
 

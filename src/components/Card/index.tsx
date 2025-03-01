@@ -1,93 +1,74 @@
-import { ShoppingCart } from "phosphor-react";
-import { Countdown, ItemContainer, PriceContainer} from "./styles";
-import  { useForm } from 'react-hook-form'
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as zod from 'zod';
-import { useState } from "react";
-
-interface CarCoffee {
-    id: string,
-    title: string,
-    description: string,
-    tags: string[],
-    price: number,
-    image: string
-}
-
-const countCoffeeItemSchema = zod.object({
-    count: zod.number().min(1),
-})
-
-type NewCardFormData = zod.infer<typeof countCoffeeItemSchema >
-
-export function Card(coffee: coffeeProps) {
-
-    // const [cart, setCart ] = useState<CarCoffee[]>([])
-    const [count, setCount ] = useState(1)
+import { Check, ShoppingCart } from "phosphor-react";
+import { ItemContainer, PriceContainer} from "./styles";
+import {useContext,  useEffect} from "react";
+import { QuantityInput } from "../Form/QuantityInput";
+import { CardContext } from "../../contexts/CoffeesContext";
 
 
-    const { register, handleSubmit} = useForm<NewCardFormData>({
-        resolver: zodResolver(countCoffeeItemSchema),
-         defaultValues: {
-            count: 1
-         }
-         }
-    )
-
-    function handleCreateNewCard(data: NewCardFormData) {
-        event.preventDefault()
-        console.log(data.count)
+  interface Coffee {
+     coffee: {
+        id: string,
+        title: string,
+        description: string,
+        tags: string[],
+        price: number,
+        image: string
+     }
     }
+ 
+export function Card( {coffee} : Coffee ){
 
-    function handleIncrement() {
-        event.preventDefault()
+   const {  handleCreateNewCard, isItemAdded, setIsItemAdded } = useContext(CardContext)
+   
+    
+// O isItemAdded recebe true quando adiciona um item, esse useEffect troca para false apos 1 segundo
+// Vamos levar esse useEffect e criar uma função aqui para   chamar o setIsItemAdded
+useEffect(()=> {
 
-        setCount( count + 1)
-        console.log(count)
-    }
+        let timeout: number 
+        
+        if(isItemAdded) {
 
-    function handleDecrement() {
-        event.preventDefault()
-
-        setCount( count - 1)
-        console.log(count)
-    }
+            timeout = setTimeout(()=>{
+                setIsItemAdded(false)
+            }, 1000)
+        }
+        return () => {
+            if(timeout) {
+                clearTimeout(timeout)
+            }
+        }
+   }, [ isItemAdded ])
 
     return(
         <>
-        <ItemContainer>
-            <header>
-                <img src={coffee.image} alt='' />
-                <span> { coffee.tags } </span>
-                <h1> {coffee.title}</h1>
-                <p> { coffee.description} </p>
-            </header>
+            <ItemContainer>
+                <header>
+                    <img src={ coffee.image} alt='' />
+                    <span> { coffee.tags } </span>
+                    <h1> { coffee.title }</h1>
+                    <p> { coffee.description } </p>
+                </header>
 
-            <PriceContainer>
-                <form  onSubmit={handleSubmit(handleCreateNewCard)} action=""> 
-                    <span> R$  </span> <strong> { coffee.price } </strong> 
-                    <Countdown > 
-                        <button onClick={handleSubmit(handleDecrement)} >  - </button> 
-                        {/* <input type="button" value="-"/> */}
-                        <input
-                            key="count" 
-                            type="text"
-                            id="count" 
-                            value={count}
-                            max={2}
-                            size={2} 
-                            {...register('count')}  
-                                                     
-                        />  
-                        <button onClick={handleSubmit(handleIncrement)}>  +  </button> 
-                    </Countdown>
+                <PriceContainer>
+                    
+                        <span> R$  </span> <strong > { coffee.price } </strong> 
 
-                    <button type="submit"> {/*disabled */}
-                        <ShoppingCart size={16} weight="fill" color='#FFFFFF'/> 
-                    </button>
-                </form>
-            </PriceContainer>
-        </ItemContainer>
+                        <QuantityInput />
+
+                        <button disabled={isItemAdded} onClick={handleCreateNewCard}> {/*disabled */}
+                            {isItemAdded ? (
+                                <Check 
+                                    weight="fill"
+                                    size={22}
+                                    color='#FFFFFF'
+                                /> 
+                            ) : (
+                                <ShoppingCart size={16} weight="fill" color='#FFFFFF'/> 
+                            )}
+                        </button>
+                </PriceContainer>
+            </ItemContainer>
         </>
     )
 }
